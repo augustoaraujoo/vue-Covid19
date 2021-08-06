@@ -4,14 +4,17 @@
     ir para<router-link to="/About">About</router-link>
 
   <header>
-  <input type="text">
-    <ul>
-      <li v-for="todo in todos " :key="todo">
-      {{todo.country}}
-      <img :src="todo.countryInfo.flag">
-      cases: {{todo.cases}}
-      </li>
-    </ul>
+  <input type="text" >
+   <tbody class="infosAll">
+     <tr v-for="todo in todos" :key="todo">
+       <td> <img :src="todo.countryInfo.flag"></td>
+       <td>country : {{todo.country}}</td>
+       <td>cases : {{todo.cases}}</td>
+       <td>deaths : {{todo.deaths}}</td>
+       <td>today cases : {{todo.todayCases}}</td>
+       <td>today deaths : {{todo.todayDeaths}}</td>
+     </tr>
+   </tbody>
   </header>
   </div>
 </template>
@@ -28,7 +31,7 @@ export default {
   mounted(){
     this.getApi();
   },
-  methods: {
+  methods:{
    async getApi(){
      try{
        axios
@@ -40,25 +43,20 @@ export default {
      }catch(error){
         console.log(error)
      }
-      
     }
   },
 }
 </script>
 <style scoped>
-.container{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+.infosAll{
+  display:flex;
+  flex-direction:row;
   flex-wrap: wrap;
-  height: 100vh;
-  margin: auto;
-}
-img:hover{
-  transform: scale(1.1);
-  transition: .3s;
+  justify-content: space-between;
+  align-items:center;
+  margin: 20px;
 }
 img{
-  width: 150px;
+  width:140px;
 }
 </style>
