@@ -2,16 +2,16 @@
   <div> 
     <p>home !</p>
     ir para<router-link to="/About">About</router-link>
-
+    <p>Rest api</p>
   <header>
-  <input type="text" >
+  <input type="text" v-model="filter">  
    <tbody class="infosAll">
-     <tr v-for="todo in todos" :key="todo">
+     <tr v-for="todo in filterCountry" :key="todo">
        <td> <img :src="todo.countryInfo.flag"></td>
        <td>country : {{todo.country}}</td>
-       <td>cases : {{todo.cases}}</td>
-       <td>deaths : {{todo.deaths}}</td>
-       <td>today cases : {{todo.todayCases}}</td>
+       <td>cases :   {{todo.cases}}</td>
+       <td>deaths :  {{todo.deaths}}</td>
+       <td>today cases :  {{todo.todayCases}}</td>
        <td>today deaths : {{todo.todayDeaths}}</td>
      </tr>
    </tbody>
@@ -25,7 +25,14 @@ export default {
   data() {
     return {
       todos:null,
-      countryDigitada:null
+      countryDigitada:null,
+      filter:""
+    }
+  },
+  computed:{
+    filterCountry(){
+      if(!this.filter) return this.todos;
+      return this.todos.filter(todos => todos.country.toLowerCase().includes(this.filter.toLowerCase()))
     }
   },
   mounted(){
@@ -48,14 +55,7 @@ export default {
 }
 </script>
 <style scoped>
-.infosAll{
-  display:flex;
-  flex-direction:row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items:center;
-  margin: 20px;
-}
+
 img{
   width:140px;
 }
