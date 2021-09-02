@@ -1,15 +1,10 @@
 <template>
   <p>About</p>
-    <h1>voltar para 
-        <router-link to="/">Home</router-link></h1>
+  <h1>voltar para <router-link to="/">Home</router-link></h1>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

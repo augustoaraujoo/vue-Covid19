@@ -1,11 +1,10 @@
 <template>
-  <div id="nav">
-  </div>
-  <router-view/>
+  <div id="nav"></div>
+  <router-view />
 </template>
 
 <style>
-*{
+* {
   padding: 0;
   margin: 0;
 }
@@ -13,5 +12,4 @@
   font-weight: bold;
   color: #2c3e50;
 }
-
 </style>
